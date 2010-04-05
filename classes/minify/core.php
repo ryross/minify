@@ -27,23 +27,33 @@ class Minify_Core {
 	protected $type;
 	protected $file;
 	protected $input       = '';
-  	protected $inputLength = 0;
+	protected $inputLength = 0;
 
-	public function __construct( $type ) {
+	public function __construct($type)
+	{
 		$this->type = $type;
 	}
 	
-	public static function factory( $type ) {
+	public static function factory($type)
+	{
 		$class = 'Minify_'.$type;
-		return new $class( $type );
+		return new $class($type);
 	}
 
-	// Dateien zusammenfassen, komprimieren und im media verzeichnis ablegen
-	public function minify( $files , $build='' )
+	public function minify($files, $build = '')
 	{
-		if (Kohana::config('minify.enabled', false))
+		if (Kohana::config('minify.enabled', FALSE))
 		{
-			$name = md5(json_encode($files));
+			$m_files = array();
+			foreach($files as $file)
+			{
+				$m_files[$file] = array($file);
+				if (file_exists(Kohana::config('minify.path.'.$this->type).$file))
+				{
+					$m_files[$file][] = filemtime(Kohana::config('minify.path.'.$this->type).$file);
+				}
+			}
+			$name = md5(json_encode($m_files));
 			$outfile = Kohana::config('minify.path.media').$name.$build.'.'.$this->type;
 			if ( ! is_file($outfile))
 			{
@@ -91,6 +101,4 @@ class Minify_Core {
 	{
 		return $this->input;
 	}
-	
-	
 }
