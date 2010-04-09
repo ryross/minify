@@ -1,9 +1,9 @@
 <?php
 return array(
-	'enabled' => true,
+	'enabled' => TRUE,
 	'path' => array(
-		'js'  	=> 'views/jscript/',  	// pfad zu den einzelnen js dateien
-		'css' 	=> 'views/css/',		// pfad zu den einzelnen css dateien
-		'media' => 'media/',		 	// pfad zum zielverzeichnis der verkleinerten dateien
+		'js'  	=> 'js/',
+		'css' 	=> 'css/',
+		'media' => 'media/',
 	), 
 );
