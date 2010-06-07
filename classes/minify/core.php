@@ -84,6 +84,14 @@ class Minify_Core {
 		}
 		else
 		{
+			$m_files = array();
+			foreach($files as &$file)
+			{
+				if(substr($file, 0, 7) != "http://")
+				{
+					$file = Kohana::config('minify.path.' . $this->type) . $file;
+				}
+			}
 			return $files;
 		}
 	}
