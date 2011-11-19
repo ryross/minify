@@ -42,19 +42,19 @@ class Minify_Core {
 
 	public function minify($files, $build = '')
 	{
-		if (Kohana::config('minify.enabled', FALSE))
+		if (Kohana::$config->load('minify.enabled', FALSE))
 		{
 			$m_files = array();
 			foreach($files as $file)
 			{
 				$m_files[$file] = array($file);
-				if (file_exists(Kohana::config('minify.path.'.$this->type).$file))
+				if (file_exists(Kohana::$config->load('minify.path.'.$this->type).$file))
 				{
-					$m_files[$file][] = filemtime(Kohana::config('minify.path.'.$this->type).$file);
+					$m_files[$file][] = filemtime(Kohana::$config->load('minify.path.'.$this->type).$file);
 				}
 			}
 			$name = md5(json_encode($m_files));
-			$outfile = Kohana::config('minify.path.media').$name.$build.'.'.$this->type;
+			$outfile = Kohana::$config->load('minify.path.media').$name.$build.'.'.$this->type;
 			if ( ! is_file($outfile))
 			{
 				if ( ! is_array($files))
@@ -64,7 +64,7 @@ class Minify_Core {
 				$output = ''; 
 				foreach($files as $file)
 				{
-					$this->file = Kohana::config('minify.path.'.$this->type).$file;
+					$this->file = Kohana::$config->load('minify.path.'.$this->type).$file;
 					if (is_file($this->file))
 					{
 						$this->set(file_get_contents($this->file));
@@ -89,7 +89,7 @@ class Minify_Core {
 			{
 				if(substr($file, 0, 7) != "http://")
 				{
-					$file = Kohana::config('minify.path.' . $this->type) . $file;
+					$file = Kohana::$config->load('minify.path.' . $this->type) . $file;
 				}
 			}
 			return $files;
