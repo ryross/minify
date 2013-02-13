@@ -96,7 +96,7 @@ class Minify_Core {
 		}
 	}
 
-	// text an minifier Übergeben (per member variable)
+	// text an minifier Ãœbergeben (per member variable)
 	public function set($input)
 	{
 		$this->input       = str_replace("\r\n", "\n", $input);
