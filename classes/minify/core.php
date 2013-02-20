@@ -34,6 +34,11 @@ class Minify_Core {
 		$this->type = $type;
 	}
 	
+        /**
+         * 
+         * @param string $type
+         * @return \Minify_Core
+         */
 	public static function factory($type)
 	{
 		$class = 'Minify_'.$type;
