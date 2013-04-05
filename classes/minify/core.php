@@ -12,7 +12,7 @@
  *  View: 
  * 	foreach ($cssFiles as $css) {
  *		if ( ! Kohana::config('minify.enabled') || $debug ) 
- * 			$js = "views/css/{$css}?{$build}";
+ * 			$css = "views/css/{$css}?{$build}";
  * 		echo HTML::style($css),"\n";
  * 	}
  * 	// application js files
