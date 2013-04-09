@@ -7,4 +7,9 @@ return array(
                 'less'  => 'less/',
 		'media' => 'media/',
 	), 
+        'driver' => array(
+                'js' => 'JShrink',
+                'css' => 'cssmin',
+                'less' => 'lessphp'
+        ),
 );
