@@ -1,4 +1,7 @@
 <?php
+
+defined('SYSPATH') OR die('No direct access allowed.');
+
 return array(
 	'enabled' => TRUE,
 	'path' => array(
@@ -11,5 +14,11 @@ return array(
                 'js' => 'JShrink',
                 'css' => 'cssmin',
                 'less' => 'lessphp'
+        ),
+        // Additional options per driver
+        'options' => array(
+            'JShrink' => array(),
+            'cssmin' => array(),
+            'lessphp' => array()
         ),
 );

@@ -2,7 +2,16 @@
 
 require_once Kohana::find_file("vendor", "cssmin/source/CssMin");
 
-class Minify_Driver_CssMin extends Minify_Driver {
+/**
+ * Minification driver for css using cssmin.
+ * 
+ * @see http://code.google.com/p/cssmin/
+ * 
+ * @package Minify
+ * @category Drivers
+ * @license http://opensource.org/licenses/mit-license.php
+ */
+class Minify_Driver_cssmin extends Minify_Driver {
 
     public function minify($input) {
         return CssMin::minify($input);
