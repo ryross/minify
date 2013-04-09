@@ -7,3 +7,6 @@
 [submodule "vendor/cssmin"]
 	path = vendor/cssmin
 	url = https://github.com/arteymix/cssmin.git
+[submodule "vendor/CSSTidy"]
+	path = vendor/CSSTidy
+	url = https://github.com/Cerdic/CSSTidy.git

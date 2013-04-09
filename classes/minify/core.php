@@ -38,10 +38,10 @@ class Minify_Core {
 	public function __construct($type)
 	{
 		$this->type = $type;
-                
-                $class = "Minify_Driver_" . Kohana::$config->load("minify.driver.$type");
-                
-                $this->driver = new $class();
+                $driver = Kohana::$config->load("minify.driver.$type");
+                $class = "Minify_Driver_$driver";
+                $options = Kohana::$config->load("minify.options.$driver");
+                $this->driver = new $class($options);
 	}
 	
         /**

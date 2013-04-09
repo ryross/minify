@@ -19,6 +19,7 @@ return array(
         'options' => array(
             'JShrink' => array(),
             'cssmin' => array(),
-            'lessphp' => array()
+            'lessphp' => array(),
+            'CSSTidy' => array()
         ),
 );
