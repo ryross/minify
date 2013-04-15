@@ -23,6 +23,12 @@
  * 	}
  */
 class Minify_Core {
+    
+       /**
+        *
+        * @var Minify_Driver
+        */
+        protected $driver;
 	
 	protected $type;
 	protected $file;
@@ -32,6 +38,10 @@ class Minify_Core {
 	public function __construct($type)
 	{
 		$this->type = $type;
+                $driver = Kohana::$config->load("minify.driver.$type");
+                $class = "Minify_Driver_$driver";
+                $options = Kohana::$config->load("minify.options.$driver");
+                $this->driver = new $class($options);
 	}
 	
         /**
@@ -41,8 +51,7 @@ class Minify_Core {
          */
 	public static function factory($type)
 	{
-		$class = 'Minify_'.$type;
-		return new $class($type);
+                return new Minify($type);		
 	}
 
 	public function minify($files, $build = '')
@@ -107,11 +116,12 @@ class Minify_Core {
 		$this->input       = str_replace("\r\n", "\n", $input);
 		$this->inputLength = strlen($this->input);
 		return $this;
-	}
-	
+	}       
+        	
 	// text komprimieren (abgeleitete Klasse)
 	public function min()
 	{
-		return $this->input;
+                return $this->driver->minify($this->input);
 	}
+        
 }

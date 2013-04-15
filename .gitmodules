@@ -1,3 +1,12 @@
 [submodule "vendor/lessphp"]
 	path = vendor/lessphp
 	url = https://github.com/leafo/lessphp
+[submodule "vendor/JShrink"]
+	path = vendor/JShrink
+	url = https://github.com/tedivm/JShrink.git
+[submodule "vendor/cssmin"]
+	path = vendor/cssmin
+	url = https://github.com/arteymix/cssmin.git
+[submodule "vendor/CSSTidy"]
+	path = vendor/CSSTidy
+	url = https://github.com/Cerdic/CSSTidy.git
